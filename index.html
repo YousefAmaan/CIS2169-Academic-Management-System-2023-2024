@@ -1,64 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Coursework2_WebApp</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursework2_WebApp</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <h1>Web Application Development Course Work-2</h1>
-    <button id="btn">Fetch information about the modules</button>
-  </header>
+    <header>
+        <h1>Web Application Development Course Work-2</h1>
+        <button id="btn">Fetch information about the modules</button>
+    </header>
 
-  <div id="module-info"></div>
+    <div id="module-info"></div>
 
-  <h2>Create New Module</h2>
-  <form id="module-form">
-    <label for="moduleName">Module Name:</label>
-    <input type="text" id="moduleName" name="moduleName">
-    <label for="moduleCourse">Course:</label>
-    <input type="text" id="moduleCourse" name="moduleCourse">
-    <button type="button" id="createModuleBtn">Create Module</button>
-  </form>
+    <!-- Trigger/Open The Modal -->
+    <div class="button-group">
+        <button id="moduleBtn">Create New Module</button>
+        <button id="degreeBtn">Create New Degree Program</button>
+        <button id="assessmentBtn">Schedule Assessment</button>
+        <button id="timeslotBtn">Schedule Module Time-Slot</button>
+    </div>
 
-  <h2>Create New Degree Program</h2>
-  <form id="degree-form">
-    <label for="degreeCode">Degree Code:</label>
-    <input type="text" id="degreeCode" name="degreeCode">
-    <label for="degreeName">Degree Name:</label>
-    <input type="text" id="degreeName" name="degreeName">
-    <label for="moduleIds">Module IDs (comma separated):</label>
-    <input type="text" id="moduleIds" name="moduleIds">
-    <button type="button" id="createDegreeBtn">Create Degree Program</button>
-  </form>
+    <!-- The Module Creation Modal -->
+    <div id="moduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="moduleModal">&times;</span>
+            <h2>Create New Module</h2>
+            <form id="module-form" class="form" onsubmit="return false;">
+                <label for="moduleName">Module Name:</label>
+                <input type="text" id="moduleName" name="moduleName" required>
+                
+                <label for="moduleCourse">Course:</label>
+                <input type="text" id="moduleCourse" name="moduleCourse" required>
+                
+                <label for="learningOutcomes">Learning Outcomes (comma separated):</label>
+                <input type="text" id="learningOutcomes" name="learningOutcomes">
+                
+                <label for="assignments">Assignments (comma separated):</label>
+                <input type="text" id="assignments" name="assignments">
+                
+                <label for="volumes">Volumes (comma separated):</label>
+                <input type="text" id="volumes" name="volumes">
+                
+                <label for="weights">Weights (comma separated):</label>
+                <input type="text" id="weights" name="weights">
 
-  <h2>Schedule Assessment Dates</h2>
-  <form id="assessment-form">
-    <label for="moduleId">Module ID:</label>
-    <input type="text" id="moduleId" name="moduleId">
-    <label for="assessmentTitle">Assessment Title:</label>
-    <input type="text" id="assessmentTitle" name="assessmentTitle">
-    <label for="assessmentDate">Assessment Date:</label>
-    <input type="date" id="assessmentDate" name="assessmentDate">
-    <button type="button" id="scheduleAssessmentBtn">Schedule Assessment</button>
-  </form>
+                <label for="degreePrograms">Add to Degree Programs (Ctrl+Click to select multiple):</label>
+                <select id="degreePrograms" name="degreePrograms" multiple required></select>
+                <button type="submit" id="createModuleBtn">Create Module</button>
+            </form>
+        </div>
+    </div>
 
-  <h2>Schedule Module Time-Slots</h2>
-  <form id="timeslot-form">
-    <label for="moduleId">Module ID:</label>
-    <input type="text" id="moduleIdTimeslot" name="moduleIdTimeslot">
-    <label for="day">Day:</label>
-    <input type="text" id="day" name="day">
-    <label for="startTime">Start Time:</label>
-    <input type="time" id="startTime" name="startTime">
-    <label for="endTime">End Time:</label>
-    <input type="time" id="endTime" name="endTime">
-    <label for="room">Room:</label>
-    <input type="text" id="room" name="room">
-    <button type="button" id="scheduleTimeslotBtn">Schedule Time-Slot</button>
-  </form>
+    <!-- The Degree Program Creation Modal -->
+    <div id="degreeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="degreeModal">&times;</span>
+            <h2>Create New Degree Program</h2>
+            <form id="degree-form" class="form" onsubmit="return false;">
+                <label for="degreeCode">Degree Code:</label>
+                <input type="text" id="degreeCode" name="degreeCode" required>
+                
+                <label for="degreeName">Degree Name:</label>
+                <input type="text" id="degreeName" name="degreeName" required>
+                
+                <label for="moduleIds">Add Existing Modules (Ctrl+Click to select multiple):</label>
+                <select id="moduleIds" name="moduleIds" multiple required></select>
+                <button type="submit" id="createDegreeBtn">Create Degree Program</button>
+            </form>
+        </div>
+    </div>
 
-  <script src="main.js"></script>
+    <!-- The Assessment Scheduling Modal -->
+    <div id="assessmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="assessmentModal">&times;</span>
+            <h2>Schedule Assessment Dates</h2>
+            <form id="assessment-form" class="form" onsubmit="return false;">
+                <label for="moduleId">Module ID:</label>
+                <select id="moduleId" name="moduleId" required></select>
+                
+                <label for="assessmentTitle">Assessment Title:</label>
+                <input type="text" id="assessmentTitle" name="assessmentTitle" required>
+                
+                <label for="assessmentDate">Assessment Date:</label>
+                <input type="date" id="assessmentDate" name="assessmentDate" required>
+                <button type="submit" id="scheduleAssessmentBtn">Schedule Assessment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- The Time-Slot Scheduling Modal -->
+    <div id="timeslotModal" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="timeslotModal">&times;</span>
+            <h2>Schedule Module Time-Slots</h2>
+            <form id="timeslot-form" class="form" onsubmit="return false;">
+                <label for="moduleIdTimeslot">Module ID:</label>
+                <select id="moduleIdTimeslot" name="moduleIdTimeslot" required></select>
+                
+                <label for="day">Day:</label>
+                <input type="text" id="day" name="day" required>
+                
+                <label for="startTime">Start Time:</label>
+                <input type="time" id="startTime" name="startTime" required>
+                
+                <label for="endTime">End Time:</label>
+                <input type="time" id="endTime" name="endTime" required>
+                
+                <label for="room">Room:</label>
+                <input type="text" id="room" name="room" required>
+                <button type="submit" id="scheduleTimeslotBtn">Schedule Time-Slot</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
