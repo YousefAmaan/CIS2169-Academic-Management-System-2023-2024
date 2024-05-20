@@ -7,11 +7,57 @@
 </head>
 <body>
   <header>
-    <h1>Web Application Development Course Work-2 </h1>
+    <h1>Web Application Development Course Work-2</h1>
     <button id="btn">Fetch information about the modules</button>
   </header>
 
   <div id="module-info"></div>
+
+  <h2>Create New Module</h2>
+  <form id="module-form">
+    <label for="moduleName">Module Name:</label>
+    <input type="text" id="moduleName" name="moduleName">
+    <label for="moduleCourse">Course:</label>
+    <input type="text" id="moduleCourse" name="moduleCourse">
+    <button type="button" id="createModuleBtn">Create Module</button>
+  </form>
+
+  <h2>Create New Degree Program</h2>
+  <form id="degree-form">
+    <label for="degreeCode">Degree Code:</label>
+    <input type="text" id="degreeCode" name="degreeCode">
+    <label for="degreeName">Degree Name:</label>
+    <input type="text" id="degreeName" name="degreeName">
+    <label for="moduleIds">Module IDs (comma separated):</label>
+    <input type="text" id="moduleIds" name="moduleIds">
+    <button type="button" id="createDegreeBtn">Create Degree Program</button>
+  </form>
+
+  <h2>Schedule Assessment Dates</h2>
+  <form id="assessment-form">
+    <label for="moduleId">Module ID:</label>
+    <input type="text" id="moduleId" name="moduleId">
+    <label for="assessmentTitle">Assessment Title:</label>
+    <input type="text" id="assessmentTitle" name="assessmentTitle">
+    <label for="assessmentDate">Assessment Date:</label>
+    <input type="date" id="assessmentDate" name="assessmentDate">
+    <button type="button" id="scheduleAssessmentBtn">Schedule Assessment</button>
+  </form>
+
+  <h2>Schedule Module Time-Slots</h2>
+  <form id="timeslot-form">
+    <label for="moduleId">Module ID:</label>
+    <input type="text" id="moduleIdTimeslot" name="moduleIdTimeslot">
+    <label for="day">Day:</label>
+    <input type="text" id="day" name="day">
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime" name="startTime">
+    <label for="endTime">End Time:</label>
+    <input type="time" id="endTime" name="endTime">
+    <label for="room">Room:</label>
+    <input type="text" id="room" name="room">
+    <button type="button" id="scheduleTimeslotBtn">Schedule Time-Slot</button>
+  </form>
 
   <script src="main.js"></script>
 </body>
