@@ -18,16 +18,4 @@ This repository represents the existing academic management system. It contains 
 
 
 
-You can use this repository to extended the programming code of `main.js`, extend the data given in JSON files, and update `index.html` plus any additional components to extend the existing functionality. Your first step is to fork this repository.
-
-
-
-***Remember...***
-
-* Prepare deployment plan.
-
-* Demonstrate the plan being actioned.
-
-* Keep the track of different command using log that can be added in report.
-
-* Feel free to contact to your tutor. 
+You can use this repository to extended the programming code of `main.js`, extend the data given in JSON files, and update `index.html` plus any additional components to extend the existing functionality.
